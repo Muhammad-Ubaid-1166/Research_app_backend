@@ -73,7 +73,7 @@ async def call_llm_with_fallback(messages, structured_output=None):
             try:
                 llm = _get_llm_client(model, api_key)
                 if structured_output is not None:
-                    llm = llm.with_structured_output(structured_output)
+                    llm = llm.with_structured_output(structured_output, method="json_schema")
                 result = await llm.ainvoke(messages)
                 if last_exception is not None:
                     logger.info(f"Recovered using model={model} key=...{api_key[-4:]}")
