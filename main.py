@@ -43,11 +43,10 @@ if not GROQ_API_KEYS:
 # Models tried in order — falls to the next one on any error (rate limit,
 # bad request, timeout, etc.), not just when a model is fully unavailable.
 MODEL_FALLBACKS = [
-    "llama-3.3-70b-versatile",
-    "llama-3.1-8b-instant",
-    "qwen/qwen3-32b",
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+    "qwen/qwen3.8-27b",
 ]
-
 tavily_client = TavilyClient(api_key=TAVILY_API_KEY) if TAVILY_API_KEY else None
 
 # Cache one ChatGroq client per (model, api_key) pair instead of rebuilding
